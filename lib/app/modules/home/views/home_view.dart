@@ -35,29 +35,29 @@ class HomeView extends GetView<HomeController> {
                       itemBuilder: (BuildContext context, int index) {
                         return GridTile(
                           header: Padding(
-                            padding: EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(8.0),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SizedBox(height: 5),
+                                const SizedBox(height: 5),
                                 Text(
                                     controller.productsList[index].productName!,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.w600,
                                         fontSize: 16)),
-                                SizedBox(height: 5),
+                                const SizedBox(height: 5),
                                 Text(
                                     "Available - ${controller.productsList[index].isActive! ? "Yes" : "No"}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 14)),
-                                SizedBox(height: 5),
+                                const SizedBox(height: 5),
                                 Text(
                                     "Quantity - ${controller.productsList[index].quantity.toString()}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 14)),

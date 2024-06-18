@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:onlineretail/app/modules/home/model/product.dart';
 import "package:dio/dio.dart";
@@ -17,7 +16,7 @@ class HomeRepository {
       if (response.statusCode == 200) {
         // If the server returns a 200 OK response, parse the JSON
         List<dynamic> jsonList = jsonDecode(response.body);
-        // print(jsonList);
+        // debugPrint(jsonList);
 
         // Map the JSON list to a list of Item objects
         // List<Product> items =
@@ -42,27 +41,27 @@ class HomeRepository {
       "isActive": true
     };
     // Headers
-    Map<String, String> headers = {
-      // 'accept': 'application/json',
-      'Content-Type': 'application/json'
-      /* 'X-CSRFTOKEN': csrfToken,*/
-    };
+    // Map<String, String> headers = {
+    //   // 'accept': 'application/json',
+    //   'Content-Type': 'application/json'
+    //   /* 'X-CSRFTOKEN': csrfToken,*/
+    // };
 
-    print("API --- addproductAPI - $singleItem");
-    print(url);
+    debugPrint("API --- addproductAPI - $singleItem");
+    debugPrint(url);
     try {
       final response =
           await http.post(Uri.parse(url), body: json.encode(singleItem));
       // final http.Client client;
       // Response response = await dio.post(url,
       //     options: Options(headers: headers), data: singleItem);
-      // print("API --- addproductAPI 2");
+      // debugPrint("API --- addproductAPI 2");
 
-      print(response.body);
+      debugPrint(response.body);
       if (response.statusCode == 200) {
         // If the server returns a 200 OK response, parse the JSON
         var jsonList = jsonDecode(response.body);
-        print(jsonList);
+        debugPrint(jsonList);
 
         // Map the JSON list to a list of Item objects
         // List<Product> items =
@@ -80,7 +79,7 @@ class HomeRepository {
     } catch (e) {
       await Utility().toast(e.toString(), Colors.red);
 
-      print(e);
+      debugPrint(e.toString());
       return "";
     }
   }
@@ -92,14 +91,14 @@ class HomeRepository {
       "productId": item.productId!,
       "quantity": item.quantity!.toString()
     };
-    print(singleItem);
+    debugPrint(singleItem.toString());
     try {
       var response = await http.post(Uri.parse(url), body: singleItem);
 
       if (response.statusCode == 200) {
         // If the server returns a 200 OK response, parse the JSON
         var jsonList = jsonDecode(response.body);
-        print(jsonList);
+        debugPrint(jsonList);
 
         // Map the JSON list to a list of Item objects
         // List<Product> items =
@@ -108,7 +107,7 @@ class HomeRepository {
         return jsonList;
       } else {
         // If the server returns an error response, throw an exception
-        print(response.body);
+        debugPrint(response.body);
         await Utility().toast(response.body, Colors.red);
 
         return "";
@@ -117,7 +116,7 @@ class HomeRepository {
     } catch (e) {
       await Utility().toast(e.toString(), Colors.red);
 
-      print(e);
+      debugPrint(e.toString());
       return "";
     }
   }
